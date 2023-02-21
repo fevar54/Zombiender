@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CIrule zombiender_malware
+{
+    meta:
+        description = "Detects Zombiender malware"
+        author = "Your Name"
+        date = "2023-02-21"
+        reference = "https://www.example.com/zombiender"
+    strings:
+        $zombiender = "Zombiender" nocase
+        $str1 = "wuauser.exe"
+        $str2 = "spoolsv.exe"
+        $str3 = "wmiprvse.exe"
+        $str4 = "wbemtest.exe"
+        $str5 = "winmgmt.exe"
+    condition:
+        all of ($zombiender, $str1, $str2, $str3, $str4, $str5)
+}
+Esta regla busca la presencia de las cadenas "Zombiender", "wuauser.exe", "spoolsv.exe", "wmiprvse.exe", "wbemtest.exe" y "winmgmt.exe" en el archivo analizado. Si todas las cadenas se encuentran presentes, la regla considera que el archivo es probablemente Zombiender malware.
+
+Es importante tener en cuenta que esta es solo una posible regla YARA y que se puede ajustar o modificar según las necesidades y características específicas del entorno de análisis.
